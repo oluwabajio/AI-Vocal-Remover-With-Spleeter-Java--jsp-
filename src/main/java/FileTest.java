@@ -1,4 +1,5 @@
 import com.google.gson.Gson;
+import models.Response;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -36,7 +37,7 @@ public class FileTest extends HttpServlet {
         System.out.println("Upload File Directory=" + fileSaveDir.getAbsolutePath());
 
         String fileName = getFileName(request.getPart("fileName"));
-        fileName = fileName.replace(" ", "");
+        fileName = fileName.replaceAll("[^a-zA-Z]", "");
         Mp3Path = uploadFilePath + File.separator + fileName;
         request.getPart("fileName").write(Mp3Path);
 

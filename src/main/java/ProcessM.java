@@ -1,4 +1,5 @@
 import com.google.gson.Gson;
+import models.AudioResultResponse;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,12 +25,12 @@ public class ProcessM extends HttpServlet {
                 "/bin/bash", "-c", "cd /opt/tomcat/webapps/ROOT/uploads && spleeter separate -i "+ fileName +" -p spleeter:2stems -o output"
                // "/bin/bash", "-c", "spleeter separate -i audio_example.mp3 -p spleeter:2stems -o output"
         });
-        printResults(process, response);
+        printResults(process, response, fileName);
 
 
     }
 
-    public static void printResults(Process process, HttpServletResponse response) throws IOException {
+    public static void printResults(Process process, HttpServletResponse response, String fileName) throws IOException {
         StringBuilder st = new StringBuilder();
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
         BufferedReader readerError = new BufferedReader(new InputStreamReader(process.getErrorStream()));
@@ -45,16 +46,18 @@ public class ProcessM extends HttpServlet {
             st.append(line+ "  -  \n");
         }
 
-        printJson(st.toString(), response);
+        printJson(st.toString(), response, fileName);
     }
 
-    private static void printJson(String toString, HttpServletResponse response) throws IOException {
-        Response response1 = new Response();
-        response1.setError(false);
-        response1.setFile_path("good");
-        response1.setMessage("SUCCESS: app path " + toString);
+    private static void printJson(String toString, HttpServletResponse response, String fileName) throws IOException {
+        AudioResultResponse mp3Response = new AudioResultResponse();
+        mp3Response.setError(false);
+        mp3Response.setFile_path("http://161.35.71.36/uploads/output/"+ fileName+"/vocals.wav");
+        mp3Response.setVocal_path("http://161.35.71.36/uploads/output/"+ fileName+"/vocals.wav");
+        mp3Response.setInstrumental_path("http://161.35.71.36/uploads/output/"+ fileName+"/accompaniment.wav");
+        mp3Response.setMessage("SUCCESS: app path " + toString);
         Gson gson = new Gson();
-        String responseJsonString = gson.toJson(response1);
+        String responseJsonString = gson.toJson(mp3Response);
 
         PrintWriter out = response.getWriter();
         response.setContentType("application/json");

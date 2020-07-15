@@ -1,7 +1,6 @@
 
-import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import models.Response;
 
 import javax.servlet.ServletException;
 
@@ -16,7 +15,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.SecureRandom;
 import java.sql.*;
-import java.util.List;
 import java.util.Random;
 
 @WebServlet("/FileUploadServlet")

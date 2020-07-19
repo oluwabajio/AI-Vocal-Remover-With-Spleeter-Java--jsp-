@@ -19,6 +19,7 @@
     <meta name="description" content="Remove Vocals, instrumentals, drums, bass, piano for karaoke and acapella use. The best
      mp3 voice remover using artificial intelligence.">
     <meta name=”robots” content="index, follow">
+    <meta name="google-site-verification" content="TRlinhA1GbQa3JpuilovDE-F-xU10DV_YllZjvmtQpw" />
 
     <!-- Bootstrap core CSS -->
     <link href="template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -32,6 +33,17 @@
     <!-- Custom styles for this template -->
     <link href="template/css/landing-page.min.css" rel="stylesheet">
     <link href="template/css/dropzone.css" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172990142-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-172990142-1');
+    </script>
+
 
 </head>
 
@@ -56,47 +68,38 @@
 
 
             <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                <form>
-                    <div class="form-row">
-                        <div class="col-12 col-md-9 mb-2 mb-md-0">
-                            <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
+<%--                <form>--%>
+<%--                    <div class="form-row">--%>
+<%--                        <div class="col-12 col-md-9 mb-2 mb-md-0">--%>
+<%--                            <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">--%>
+<%--                        </div>--%>
+<%--                        <div class="col-12 col-md-3">--%>
+<%--                            <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </form>--%>
+
+
+                    <form action="FileTest" method="post" enctype="multipart/form-data">
+
+                        <div class="form-row">
+                            <div class="col-12 col-md-9 mb-2 mb-md-0" style="background: white; border: 2px dashed blue !important;">
+                                <input type="file" id="fileName" style=" margin: 0; padding: 2rem 1.5rem;
+                                color: #5a5a5a; background: white; border:0 none !important; outline:0 !important;" name="fileName"  accept="audio/mpeg3">
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <input type="button"  value="Upload" id="but_upload" class="btn btn-block btn-lg btn-primary"
+                                style="height: 100%">
+                            </div>
                         </div>
-                        <div class="col-12 col-md-3">
-                            <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
-                        </div>
-                    </div>
-                </form>
 
-                <%--                <div class="drop-cont">--%>
-                <%--                    <form action="FileTest" class="dropzone" method="post" enctype="multipart/form-data"--%>
-                <%--                          id="my-awesome-dropzone" style="border: 2px dashed blue !important;">--%>
-                <%--                        &lt;%&ndash;                    <input name="fileName" type="file" />&ndash;%&gt;--%>
-                <%--                        <div class="fallback">--%>
-                <%--                            <input name="fileName" type="file"/>--%>
-                <%--                        </div>--%>
-                <%--                    </form>--%>
-                <%--                </div>--%>
-
-
-                <%--                <form action="FileTest" method="post" enctype="multipart/form-data">--%>
-                <%--                    Select File to Upload:<input type="file" name="fileName">--%>
-                <%--                    <br>--%>
-                <%--                    <input type="submit" value="Upload">--%>
-                <%--                </form>--%>
-
-
-                <form action="FileTest" method="post" enctype="multipart/form-data">
-                    Select File to Upload:<input type="file" id="fileName" name="fileName">
-                    <br>
-                    <%--                    <input type="submit" value="Upload" >--%>
-                    <input type="button" value="Upload" id="but_upload">
-                </form>
-
-
+                    </form>
 
                 <div class="container" id="div_buttons">
-                    <a href="#" id="btn_instrumental" target="_blank" class="btn mb-2 mr-3 btn-xl btn-outline-light">Download Instrumental</a>
-                    <a href="#" id="btn_vocal" target="_blank"  class="btn mb-2 btn-xl btn-outline-light">Download Vocal</a>
+                    <a href="#" id="btn_instrumental" target="_blank" class="btn mb-2 mr-3 btn-xl btn-outline-light">Download
+                        Instrumental</a>
+                    <a href="#" id="btn_vocal" target="_blank" class="btn mb-2 btn-xl btn-outline-light">Download
+                        Vocal</a>
                 </div>
 
             </div>
@@ -337,54 +340,66 @@
 <%--</script>--%>
 
 <script>
-    $('#divSpinner').hide();
-    $('#div_buttons').hide()
-
-    $("#but_upload").click(function () {
-        $('#divSpinner').show();
-        var fd = new FormData();
-        var files = $('#fileName')[0].files[0];
-        fd.append('fileName', files);
-
-        $.ajax({
-            url: 'FileTest',
-            type: 'post',
-            data: fd,
-            dataType: 'json',
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                if (response != 0) {
-                    $("#img").attr("src", response);
-                    $(".preview img").show(); // Display image element
 
 
 
-                    alert(response.file_name);
 
-                    $.post("ProcessM",
-                        {
-                            file_name: response.file_name,
-                            action: "watermark_video"
-                        },
-                        function (result) {
-                            alert(result.instrumental_path);
-                            $('#divSpinner').hide();
-                            $('#div_buttons').show();
-                            $('#btn_instrumental').attr("href", result.instrumental_path);
-                            $('#btn_vocal').attr("href", result.vocal_path);
+      $('#divSpinner').hide();
+      $('#div_buttons').hide()
+
+      $("#but_upload").click(function () {
+
+          if($('#fileName').length > 0 && $('#fileName').val() != '') {
+
+              $('#divSpinner').show();
+              var fd = new FormData();
+              var files = $('#fileName')[0].files[0];
+              fd.append('fileName', files);
+
+              $.ajax({
+                  url: 'FileTest',
+                  type: 'post',
+                  data: fd,
+                  dataType: 'json',
+                  contentType: false,
+                  processData: false,
+                  success: function (response) {
+                      if (response != 0) {
+                          $("#img").attr("src", response);
+                          $(".preview img").show(); // Display image element
 
 
-                        });
+                          alert(response.file_name);
+
+                          $.post("ProcessM",
+                              {
+                                  file_name: response.file_name,
+                                  action: "watermark_video"
+                              },
+                              function (result) {
+                                  alert(result.instrumental_path);
+                                  $('#divSpinner').hide();
+                                  $('#div_buttons').show();
+                                  $('#btn_instrumental').attr("href", result.instrumental_path);
+                                  $('#btn_vocal').attr("href", result.vocal_path);
 
 
-                } else {
-                    alert('file not uploaded');
-                    $('#divSpinner').hide();
-                }
-            },
-        });
-    });
+                              });
+
+
+                      } else {
+                          alert('file not uploaded');
+                          $('#divSpinner').hide();
+                      }
+                  },
+              });
+
+          }else {
+              alert('Kindly Select a File');
+          }
+
+      });
+
 
 
 </script>

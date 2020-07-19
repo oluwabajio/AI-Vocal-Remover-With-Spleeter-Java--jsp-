@@ -4,6 +4,7 @@ public class Response {
 
     private Boolean error;
     private String message;
+    private String file_name;
     private String file_path;
 
 
@@ -21,6 +22,14 @@ public class Response {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getFile_name() {
+        return file_name;
+    }
+
+    public void setFile_name(String file_name) {
+        this.file_name = file_name;
     }
 
     public String getFile_path() {

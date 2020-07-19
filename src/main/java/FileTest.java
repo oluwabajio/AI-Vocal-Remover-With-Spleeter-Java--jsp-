@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet("/FileTest")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10,    // 10 MB
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 20,    // 20 MB
         maxFileSize = 1024 * 1024 * 50,        // 50 MB
         maxRequestSize = 1024 * 1024 * 100)    // 100 MB
 public class FileTest extends HttpServlet {
@@ -29,6 +29,8 @@ public class FileTest extends HttpServlet {
         String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
         String Mp3Path = "";
 
+        System.out.println(applicationPath);
+
         // creates the save directory if it does not exists
         File fileSaveDir = new File(uploadFilePath);
         if (!fileSaveDir.exists()) {
@@ -43,6 +45,7 @@ public class FileTest extends HttpServlet {
 
         response1.setError(false);
         response1.setFile_path(Mp3Path);
+        response1.setFile_name(fileName);
         response1.setMessage("SUCCESS: app path " + applicationPath);
         Gson gson = new Gson();
         String responseJsonString = gson.toJson(response1);
@@ -58,17 +61,7 @@ public class FileTest extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        response1.setError(false);
-        response1.setFile_path("dkjdskj");
-        response1.setMessage("Uploabkded Successfully");
-        Gson gson = new Gson();
-        String responseJsonString = gson.toJson(response1);
 
-        PrintWriter out = response.getWriter();
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        out.print(responseJsonString);
-        out.flush();
     }
 
     private String getFileName(Part part) {

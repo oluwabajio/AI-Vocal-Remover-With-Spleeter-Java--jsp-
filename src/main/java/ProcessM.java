@@ -13,17 +13,25 @@ import java.io.PrintWriter;
 
 @WebServlet("/ProcessM")
 public class ProcessM extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String fileName = request.getParameter("file_name");
 
+        Process process = Runtime.getRuntime().exec(new String[] {
+                //  "/bin/bash", "-c", "cd /opt/tomcat/webapps/ROOT/uploads && spleeter separate -i "+ fileName +" -p spleeter:2stems -o output"
+                "/bin/bash", "-c", "cd /opt/tomcat/webapps/ROOT/uploads && spleeter separate -i "+ fileName +" -p spleeter:2stems -o output -c mp3"
+
+        });
+        printResults(process, response, fileName);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String fileName = request.getParameter("file_name");
 
         Process process = Runtime.getRuntime().exec(new String[] {
-                "/bin/bash", "-c", "cd /opt/tomcat/webapps/ROOT/uploads && spleeter separate -i "+ fileName +" -p spleeter:2stems -o output"
-               // "/bin/bash", "-c", "spleeter separate -i audio_example.mp3 -p spleeter:2stems -o output"
+              //  "/bin/bash", "-c", "cd /opt/tomcat/webapps/ROOT/uploads && spleeter separate -i "+ fileName +" -p spleeter:2stems -o output"
+                "/bin/bash", "-c", "cd /opt/tomcat/webapps/ROOT/uploads && spleeter separate -i "+ fileName +" -p spleeter:2stems -o output -c mp3"
+
         });
         printResults(process, response, fileName);
 
@@ -52,9 +60,9 @@ public class ProcessM extends HttpServlet {
     private static void printJson(String toString, HttpServletResponse response, String fileName) throws IOException {
         AudioResultResponse mp3Response = new AudioResultResponse();
         mp3Response.setError(false);
-        mp3Response.setFile_path("http://161.35.71.36/uploads/output/"+ fileName+"/vocals.wav");
-        mp3Response.setVocal_path("http://161.35.71.36/uploads/output/"+ fileName+"/vocals.wav");
-        mp3Response.setInstrumental_path("http://161.35.71.36/uploads/output/"+ fileName+"/accompaniment.wav");
+        mp3Response.setFile_path("http://161.35.71.36/uploads/output/"+ fileName+"/vocals.mp3");
+        mp3Response.setVocal_path("http://161.35.71.36/uploads/output/"+ fileName+"/vocals.mp3");
+        mp3Response.setInstrumental_path("http://161.35.71.36/uploads/output/"+ fileName+"/accompaniment.mp3");
         mp3Response.setMessage("SUCCESS: app path " + toString);
         Gson gson = new Gson();
         String responseJsonString = gson.toJson(mp3Response);

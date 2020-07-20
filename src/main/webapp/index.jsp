@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta property="og:image" content="https://aivocalremover.com/template/img/official_image.jpg" />
 
     <title>AI Vocal Remover | Remove Vocals & Instrumental from Songs</title>
     <meta name="description" content="Remove Vocals, instrumentals, drums, bass, piano for karaoke and acapella use. The best
@@ -49,6 +50,24 @@
     </script>
 
 
+    <!-- advertising WxgXTTtKZq65M72oP2jKPByh_wIhSir9U46H8W6iDBRJL7GX89hcQpcVUzseE_Q3IqHCj1y_SfMsArGIliezaA==-->
+    <script data-cfasync="false"  id="clevernt" type="text/javascript">
+        (function (document, window) {
+            var c = document.createElement("script");
+            c.type = "text/javascript"; c.async = !0; c.id = "CleverNTLoader22410";  c.setAttribute("data-target",window.name); c.setAttribute("data-callback","put-your-callback-macro-here");
+            c.src = "//clevernt.com/scripts/19e14edbe399a4f1c5a091dd62b4c44e.min.js?20200720=" + Math.floor((new Date).getTime());
+            var a = !1;
+            try {
+                a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+            } catch (e) {
+                a = !1;
+            }
+            a || ( a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+            a.parentNode.insertBefore(c, a);
+        })(document, window);
+    </script>
+    <!-- end advertising -->
+
 </head>
 
 <body>
@@ -57,7 +76,7 @@
 <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
         <a class="navbar-brand" href="#">AI Vocal Remover</a>
-        <a class="btn btn-primary" href="#">Sign In</a>
+        <a class="" target="_blank" href="https://play.google.com/store/apps/details?id=vocal.remover.karaoke.instrumental.app"><img src="template/img/playstore.png" width="200px"></a>
     </div>
 </nav>
 
@@ -298,7 +317,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item mr-3">
-                        <a href="#">
+                        <a href="https://twitter.com/aivocalremover">
                             <i class="fab fa-twitter-square fa-2x fa-fw"></i>
                         </a>
                     </li>

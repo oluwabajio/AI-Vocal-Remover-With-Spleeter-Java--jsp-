@@ -61,8 +61,10 @@ public class ProcessM extends HttpServlet {
         AudioResultResponse mp3Response = new AudioResultResponse();
         mp3Response.setError(false);
         mp3Response.setFile_path("http://161.35.71.36/uploads/output/"+ fileName+"/vocals.mp3");
-        mp3Response.setVocal_path("http://161.35.71.36/uploads/output/"+ fileName+"/vocals.mp3");
-        mp3Response.setInstrumental_path("http://161.35.71.36/uploads/output/"+ fileName+"/accompaniment.mp3");
+//        mp3Response.setVocal_path("http://161.35.71.36/uploads/output/"+ fileName+"/vocals.mp3");
+//        mp3Response.setInstrumental_path("http://161.35.71.36/uploads/output/"+ fileName+"/accompaniment.mp3");
+        mp3Response.setVocal_path("https://aivocalremover.com/uploads/output/"+ fileName+"/vocals.mp3");
+        mp3Response.setInstrumental_path("https://aivocalremover.com/uploads/output/"+ fileName+"/accompaniment.mp3");
         mp3Response.setMessage("SUCCESS: app path " + toString);
         Gson gson = new Gson();
         String responseJsonString = gson.toJson(mp3Response);

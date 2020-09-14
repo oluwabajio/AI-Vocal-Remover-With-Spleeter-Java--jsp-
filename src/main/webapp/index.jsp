@@ -14,7 +14,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta property="og:image" content="https://aivocalremover.com/template/img/official_image.jpg" />
+    <meta property="og:image" content="https://aivocalremover.com/template/img/officialimage.jpg" />
+    <meta property="og:image:width" content="200" />
+    <meta property="og:image:height" content="200" />
 
     <title>AI Vocal Remover | Remove Vocals & Instrumental from Songs</title>
     <meta name="description" content="Remove Vocals, instrumentals, drums, bass, piano for karaoke and acapella use. The best

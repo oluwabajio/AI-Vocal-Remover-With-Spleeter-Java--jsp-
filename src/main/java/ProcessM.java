@@ -60,9 +60,7 @@ public class ProcessM extends HttpServlet {
     private static void printJson(String toString, HttpServletResponse response, String fileName) throws IOException {
         AudioResultResponse mp3Response = new AudioResultResponse();
         mp3Response.setError(false);
-        mp3Response.setFile_path("http://161.35.71.36/uploads/output/"+ fileName+"/vocals.mp3");
-//        mp3Response.setVocal_path("http://161.35.71.36/uploads/output/"+ fileName+"/vocals.mp3");
-//        mp3Response.setInstrumental_path("http://161.35.71.36/uploads/output/"+ fileName+"/accompaniment.mp3");
+        mp3Response.setFile_path("https://aivocalremover/uploads/output/"+ fileName+"/vocals.mp3");
         mp3Response.setVocal_path("https://aivocalremover.com/uploads/output/"+ fileName+"/vocals.mp3");
         mp3Response.setInstrumental_path("https://aivocalremover.com/uploads/output/"+ fileName+"/accompaniment.mp3");
         mp3Response.setMessage("SUCCESS: app path " + toString);

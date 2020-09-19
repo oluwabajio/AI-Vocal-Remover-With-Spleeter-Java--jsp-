@@ -52,23 +52,8 @@
     </script>
 
 
-    <!-- advertising WxgXTTtKZq65M72oP2jKPByh_wIhSir9U46H8W6iDBRJL7GX89hcQpcVUzseE_Q3IqHCj1y_SfMsArGIliezaA==-->
-    <script data-cfasync="false"  id="clevernt" type="text/javascript">
-        (function (document, window) {
-            var c = document.createElement("script");
-            c.type = "text/javascript"; c.async = !0; c.id = "CleverNTLoader22410";  c.setAttribute("data-target",window.name); c.setAttribute("data-callback","put-your-callback-macro-here");
-            c.src = "//clevernt.com/scripts/19e14edbe399a4f1c5a091dd62b4c44e.min.js?20200720=" + Math.floor((new Date).getTime());
-            var a = !1;
-            try {
-                a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
-            } catch (e) {
-                a = !1;
-            }
-            a || ( a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
-            a.parentNode.insertBefore(c, a);
-        })(document, window);
-    </script>
-    <!-- end advertising -->
+
+    <script data-ad-client="ca-pub-9295514865119591" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 </head>
 

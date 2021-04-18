@@ -55,6 +55,28 @@
 
     <script data-ad-client="ca-pub-9295514865119591" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
+
+    <!-- advertising KohCENQyc3HD3mmmGyFOBVm0u-IpGZfLTQZpHIMLXC5pWJzqmX2f-Al-b8-9W07-f6KfsaHVeiKUnUR3S5WPng==-->
+    <script data-cfasync="false"  id="clevernt" type="text/javascript">
+        (function (document, window) {
+            var c = document.createElement("script");
+            c.type = "text/javascript"; c.async = !0; c.id = "CleverNTLoader22410";  c.setAttribute("data-target",window.name); c.setAttribute("data-callback","put-your-callback-macro-here");
+            c.src = "//clevernt.com/scripts/19e14edbe399a4f1c5a091dd62b4c44e.min.js?20210416=" + Math.floor((new Date).getTime());
+            var a = !1;
+            try {
+                a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+            } catch (e) {
+                a = !1;
+            }
+            a || ( a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+            a.parentNode.insertBefore(c, a);
+        })(document, window);
+    </script>
+    <!-- end advertising -->
+
+
+    <script type='text/javascript' src='//gadsabs.com/c8/3a/b6/c83ab685e09c8fa6e7de3ac1a0604dff.js'></script>
+
 </head>
 
 <body>
